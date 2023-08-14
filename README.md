@@ -1,6 +1,6 @@
 # INFT-DB
 
-Base repository for the INFT_DB Project: a decentralized, multi-chain, extensible and flexible digital asset manager.
+Backend repository for the INFT_DB Project: a decentralized, multi-chain, extensible and flexible digital asset manager.
 
 ## Installation
 
@@ -12,10 +12,13 @@ Clone the repository to contribute to the project:
 
 ## Prerequisites
 
-[Visual Studio Code](https://code.visualstudio.com/download)
-[Truffle plugin](https://marketplace.visualstudio.com/items?itemName=trufflesuite-csi.truffle-vscode)
-[Node.js](https://nodejs.org/)
-[Solidity Extension and compiler for VS](https://docs.soliditylang.org/en/v0.8.20/installing-solidity.html)
+VS Code: [Visual Studio Code](https://code.visualstudio.com/download)
+
+The Truffle plugin for VS: [Truffle plugin](https://marketplace.visualstudio.com/items?itemName=trufflesuite-csi.truffle-vscode)
+
+Node.JS, NPM: [Node.js](https://nodejs.org/)
+
+The Solidity Compiler or the VS Extension (installs a compiler automatically): [Solidity Extension and compiler for VS](https://docs.soliditylang.org/en/v0.8.20/installing-solidity.html)
 
 ## Contributing
 
