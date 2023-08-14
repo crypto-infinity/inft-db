@@ -38,7 +38,9 @@ jobs:
       displayName: 'Solidity Preparation'
 
 - job: ThirdStage
-  dependsOn: FirstStage,SecondStage
+  dependsOn: 
+  - FirstStage
+  - SecondStage
   steps:
     - script: |
         echo Beginning Solidity Environment setup:
