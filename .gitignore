@@ -1,0 +1,9 @@
+node_modules
+.env
+truffle-config.js
+build
+backups
+contracts_archive
+package*
+truffle*
+settings.json
