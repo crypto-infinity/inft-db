@@ -19,12 +19,24 @@ jobs:
         sudo apt upgrade -y
         sudo apt install npm -y
         sudo npm install -g truffle
+
+        echo "Truffle is installed"
+
         npm i "@openzeppelin/contracts"
         npm i "@openzeppelin/contracts-upgradeable"
+
+        echo "OpenZeppelin libraries are installed"
+
         truffle init
         cd ./contracts/
+
+        ls -l
+
         sudo curl -o INFT_DB.sol "https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/INFT_DB.sol"
         sudo curl -o standardNFT_DB.sol "https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/standardNFT_DB.sol"
+
+        ls -l
+
         truffle compile"
 
       displayName: 'Agent Preparation'
