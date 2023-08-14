@@ -12,6 +12,8 @@ Clone the repository to contribute to the project:
 
 ## Prerequisites
 
+For the correct code execution, we recommend installing these tools and softwares:
+
 VS Code: [Visual Studio Code](https://code.visualstudio.com/download)
 
 The Truffle plugin for VS: [Truffle plugin](https://marketplace.visualstudio.com/items?itemName=trufflesuite-csi.truffle-vscode)
