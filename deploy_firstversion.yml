@@ -30,22 +30,35 @@ jobs:
         echo "Beginning Truffle initiation. Folder contents:"
         ls -l
 
+        echo "Moving to new contract folders: "
+
+        mkdir truffle_environment
+        cd truffle_environment
+
+        echo "Truffle_Environment folder contents before init: "
+
+        ls -l
+
         truffle init
 
-        echo "Truffle initialized, moving to new contract folders: "
-
-        cd ./contracts/
-
-        echo "/Contracts/ folder contents: "
+        echo "Truffle_Environment folder contents after init: "
 
         ls -l
 
-        sudo curl -o INFT_DB.sol "https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/INFT_DB.sol"
-        sudo curl -o standardNFT_DB.sol "https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/standardNFT_DB.sol"
-
-        echo "/Contracts/ folder contents again, after curls: "
-        ls -l
-
+        echo "Beginning Compiling:"
         truffle compile"
+
+        - task: CopyArtifacts@1
+            inputs:
+              SourceFolder: './build'
+              Contents: '**'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+              OverWrite: true
+        
+        - task: PublishBuildArtifacts@1
+            inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
 
       displayName: 'Agent Preparation'
