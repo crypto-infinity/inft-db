@@ -27,14 +27,23 @@ jobs:
 
         echo "OpenZeppelin libraries are installed"
 
+        echo "Beginning Truffle initiation. Folder contents:"
+        ls -l
+
         truffle init
+
+        echo "Truffle initialized, moving to new contract folders: "
+
         cd ./contracts/
+
+        echo "/Contracts/ folder contents: "
 
         ls -l
 
         sudo curl -o INFT_DB.sol "https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/INFT_DB.sol"
         sudo curl -o standardNFT_DB.sol "https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/standardNFT_DB.sol"
 
+        echo "/Contracts/ folder contents again, after curls: "
         ls -l
 
         truffle compile"
