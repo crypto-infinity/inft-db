@@ -45,12 +45,20 @@ jobs:
 
         ls -l
 
-        sudo curl -o INFT_DB.sol "https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/INFT_DB.sol"
-        sudo curl -o standardNFT_DB.sol "https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/standardNFT_DB.sol"
-
-        echo "/Contracts/ folder contents again, after curls: "
-        ls -l
-
+        echo "Beginning Compiling:"
         truffle compile"
+
+        - task: CopyArtifacts@1
+            inputs:
+              SourceFolder: './build'
+              Contents: '**'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+              OverWrite: true
+        
+        - task: PublishBuildArtifacts@1
+            inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
 
       displayName: 'Agent Preparation'
