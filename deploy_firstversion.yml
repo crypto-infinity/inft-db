@@ -1,0 +1,64 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+- job: FirstStage
+  steps:
+    - script: |
+        echo Beginning Agent preparation:
+
+        sudo apt update
+        sudo apt upgrade -y
+        sudo apt install npm -y
+        sudo npm install -g truffle
+
+        echo "Truffle is installed"
+
+        npm i "@openzeppelin/contracts"
+        npm i "@openzeppelin/contracts-upgradeable"
+
+        echo "OpenZeppelin libraries are installed"
+
+        echo "Beginning Truffle initiation. Folder contents:"
+        ls -l
+
+        echo "Moving to new contract folders: "
+
+        mkdir truffle_environment
+        cd truffle_environment
+
+        echo "Truffle_Environment folder contents before init: "
+
+        ls -l
+
+        truffle init
+
+        echo "Truffle_Environment folder contents after init: "
+
+        ls -l
+
+        echo "Beginning Compiling:"
+        truffle compile"
+
+        - task: CopyArtifacts@1
+            inputs:
+              SourceFolder: './build'
+              Contents: '**'
+              TargetFolder: '$(Build.ArtifactStagingDirectory)'
+              OverWrite: true
+        
+        - task: PublishBuildArtifacts@1
+            inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
+
+      displayName: 'Agent Preparation'

@@ -7,3 +7,4 @@ contracts_archive
 package*
 truffle*
 settings.json
+contracts/ERC20.sol
