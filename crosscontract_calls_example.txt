@@ -1,6 +1,5 @@
-VEDI RIGA con testo RELEVANT CODE STARTS HERE
+Debug logs
 
-prova commit #2
 }
 truffle(development)> dynamic_contract.address
 undefined
