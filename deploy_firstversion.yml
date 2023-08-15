@@ -30,13 +30,18 @@ jobs:
         echo "Beginning Truffle initiation. Folder contents:"
         ls -l
 
+        echo "Moving to new contract folders: "
+
+        mkdir truffle_environment
+        cd truffle_environment
+
+        echo "Truffle_Environment folder contents before init: "
+
+        ls -l
+
         truffle init
 
-        echo "Truffle initialized, moving to new contract folders: "
-
-        cd ./contracts/
-
-        echo "/Contracts/ folder contents: "
+        echo "Truffle_Environment folder contents after init: "
 
         ls -l
 
