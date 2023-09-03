@@ -13,8 +13,8 @@ jobs:
     - script: |
         echo Beginning Agent preparation:
 
-        sudo apt install npm dotenv @truffle/hdwallet-provider -y
-        sudo npm install -g truffle -y
+        sudo apt install npm -y
+        sudo npm install -g truffle dotenv @truffle/hdwallet-provider -y
 
         echo "Truffle is installed"
 
@@ -56,23 +56,28 @@ jobs:
         sudo cp $(truffleconfig.secureFilePath) . 
         sudo cp $(env.secureFilePath) . 
 
+        sudo wget -P "./contracts" https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/standardNFT_DB.sol
+        sudo wget -P "./contracts" https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/INFT_DB.sol
+        sudo wget -P "./contracts" https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/royaltiesNFT_DB.sol
+        sudo wget -P "./contracts" https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/dynamicNFT_DBService.sol
+
+        echo "Contents of truffle_environment after DownloadGithub Task "
+
+        ls -l
+
+        echo "Contents of truffle_environment/contracts after DownloadGithub Task "
+        ls -l ./contracts
+
     - task: DownloadGitHubRelease@0
       inputs:
         connection: 'crypto-infinity'
         userRepository: 'crypto-infinity/inft-db'
-        defaultVersionType: 'latest'
+        defaultVersionType: 'specificTag'
+        version: '119737075'
         itemPattern: '**/*.yaml'
         downloadPath: '.'
 
     - script: |
-        echo "Contents of truffle_environment after DownloadGithub Task: "
-
-        ls -l
-        cd contracts
-
-        echo "Contents of truffle_environment/contracts after DownloadGithub Task: "
-        ls -l
-
         echo "Beginning Compiling:"
 
         sudo truffle compile    
