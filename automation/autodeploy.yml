@@ -61,7 +61,7 @@ jobs:
 
         npm dotenv --version
         npm @truffle/hdwallet-provider --version
-        npm i dotenv @truffle/hdwallet-provider @chainlink/contracts @openzeppelin/contracts openzeppelin/contracts-upgradeable web3 -y
+        npm i dotenv @truffle/hdwallet-provider @chainlink/contracts @openzeppelin/contracts @openzeppelin/contracts-upgradeable web3 -y
 
         sudo truffle compile
       displayName: Truffle Compile
