@@ -68,6 +68,15 @@ jobs:
     - script: |
         echo "Beginning Compiling:"
 
+        echo "Contents of truffle_environment before compilation: "
+
+        ls -l
+
+        echo "NPM modules versions: "
+
+        npm dotenv --version
+        npm @truffle/hdwallet-provider --version
+
         sudo truffle compile
       displayName: Compiling Step
 
