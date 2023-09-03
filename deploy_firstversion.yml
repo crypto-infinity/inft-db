@@ -72,7 +72,7 @@ jobs:
 
         echo "Contents of truffle_environment/contracts after DownloadGithub Task: "
         ls -l
-        
+
         echo "Beginning Compiling:"
 
         sudo truffle compile    
