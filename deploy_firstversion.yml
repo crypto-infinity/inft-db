@@ -14,7 +14,7 @@ jobs:
         echo Beginning Agent preparation:
 
         sudo apt install npm -y
-        sudo npm install -g truffle dotenv @truffle/hdwallet-provider -y
+        sudo npm install -g truffle -y
 
         echo "Truffle is installed"
 
@@ -61,7 +61,7 @@ jobs:
 
         npm dotenv --version
         npm @truffle/hdwallet-provider --version
-        npm i dotenv
+        npm i dotenv @truffle/hdwallet-provider -y
 
         sudo truffle compile
       displayName: Truffle Compile
