@@ -23,22 +23,7 @@ jobs:
 
         echo "OpenZeppelin libraries are installed"
 
-        echo "Beginning Truffle initiation. Folder contents:"
-        ls -l
-
-        echo "Moving to new contract folders: "
-
-        mkdir truffle_environment
-        cd truffle_environment
-
-        echo "Truffle_Environment folder contents before init: "
-
-        ls -l
-
-        sudo truffle init
-
-        echo "Truffle_Environment folder contents after init: "
-
+        echo "Folder contents after initialization: "
         ls -l
       displayName: Environment Preparation
 
@@ -57,18 +42,18 @@ jobs:
         sudo cp $(truffleconfig.secureFilePath) . 
         sudo cp $(env.secureFilePath) . 
 
-        echo "Contents of truffle_environment after DownloadGithub Task "
+        echo "Contents of home/vsts after DownloadGithub Task "
 
         ls -l
 
-        echo "Contents of truffle_environment/contracts after DownloadGithub Task "
+        echo "Contents of home/vsts/contracts after DownloadGithub Task "
         ls -l ./contracts
-      displayName: Repo Files Preparation
+      displayName: Repository Files Preparation
 
     - script: |
         echo "Beginning Compiling:"
 
-        echo "Contents of truffle_environment before compilation: "
+        echo "Contents of home/vsts before compilation: "
 
         ls -l
 
@@ -78,7 +63,7 @@ jobs:
         npm @truffle/hdwallet-provider --version
 
         sudo truffle compile
-      displayName: Compiling Step
+      displayName: Truffle Compile
 
 - job: PublishArtifacts
   dependsOn: DeployBlockchain
