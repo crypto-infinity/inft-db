@@ -69,7 +69,7 @@ jobs:
     - script: |
         echo "Beginning Migration:"
 
-        sudo truffle migrate
+        sudo truffle migrate --network goerli
       displayName: Truffle Migrate
 
 - job: PublishArtifacts
