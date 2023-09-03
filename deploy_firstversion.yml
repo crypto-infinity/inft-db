@@ -46,8 +46,8 @@ jobs:
         ls -l
 
         echo "Beginning Compiling:"
-        truffle compile"
-
+        truffle compile
+        
         - task: CopyArtifacts@1
             inputs:
               SourceFolder: './build'
