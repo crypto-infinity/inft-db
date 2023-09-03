@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.9;
+pragma solidity >=0.8.21;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol"; //implements UUIP pattern for upgrades
 import "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155PausableUpgradeable.sol"; //implements pausable pattern for upgrades
