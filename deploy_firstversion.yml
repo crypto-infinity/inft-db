@@ -61,6 +61,7 @@ jobs:
 
         npm dotenv --version
         npm @truffle/hdwallet-provider --version
+        npm i dotenv
 
         sudo truffle compile
       displayName: Truffle Compile
