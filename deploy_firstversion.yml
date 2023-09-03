@@ -1,7 +1,5 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+
+#Azure DevOps smart contract auto deploy
 
 trigger:
 - main
@@ -15,8 +13,6 @@ jobs:
     - script: |
         echo Beginning Agent preparation:
 
-        sudo apt update
-        sudo apt upgrade -y
         sudo apt install npm -y
         sudo npm install -g truffle
 
@@ -39,14 +35,14 @@ jobs:
 
         ls -l
 
-        truffle init
+        sudo truffle init
 
         echo "Truffle_Environment folder contents after init: "
 
         ls -l
 
         echo "Beginning Compiling:"
-        truffle compile
+        sudo truffle compile
         
         - task: CopyArtifacts@1
             inputs:
