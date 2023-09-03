@@ -40,6 +40,7 @@ jobs:
         echo "Truffle_Environment folder contents after init: "
 
         ls -l
+      displayName: Environment Preparation
 
     - task: DownloadSecureFile@1
       name: truffleconfig
@@ -56,37 +57,25 @@ jobs:
         sudo cp $(truffleconfig.secureFilePath) . 
         sudo cp $(env.secureFilePath) . 
 
-        sudo wget -P "./contracts" https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/standardNFT_DB.sol
-        sudo wget -P "./contracts" https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/INFT_DB.sol
-        sudo wget -P "./contracts" https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/royaltiesNFT_DB.sol
-        sudo wget -P "./contracts" https://raw.githubusercontent.com/crypto-infinity/inft-db/main/contracts/dynamicNFT_DBService.sol
-
         echo "Contents of truffle_environment after DownloadGithub Task "
 
         ls -l
 
         echo "Contents of truffle_environment/contracts after DownloadGithub Task "
         ls -l ./contracts
-
-    - task: DownloadGitHubRelease@0
-      inputs:
-        connection: 'crypto-infinity'
-        userRepository: 'crypto-infinity/inft-db'
-        defaultVersionType: 'specificTag'
-        version: '119737075'
-        itemPattern: '**/*.yaml'
-        downloadPath: '.'
+      displayName: Repo Files Preparation
 
     - script: |
         echo "Beginning Compiling:"
 
-        sudo truffle compile    
+        sudo truffle compile
+      displayName: Compiling Step
 
 - job: PublishArtifacts
   dependsOn: DeployBlockchain
   steps:
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: './build'
+      PathtoPublish: '.'
       ArtifactName: 'deploy_logs'
       publishLocation: 'Container'
