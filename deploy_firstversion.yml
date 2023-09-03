@@ -8,7 +8,7 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-- job: FirstStage
+- job: DeployBlockchain
   steps:
     - script: |
         echo Beginning Agent preparation:
@@ -41,20 +41,26 @@ jobs:
 
         ls -l
 
+        echo "Copying repository files to the directory: "
+
+    - task: DownloadSecureFile@1
+      name: TruffleConfig 
+      inputs:
+        secureFile: 'truffle-config.js'
+
+    - script: |
+        sudo cp $(TruffleConfig.secureFilePath) . 
+        cat truffle-config.js
+
         echo "Beginning Compiling:"
         sudo truffle compile
-        
-        - task: CopyArtifacts@1
-            inputs:
-              SourceFolder: './build'
-              Contents: '**'
-              TargetFolder: '$(Build.ArtifactStagingDirectory)'
-              OverWrite: true
-        
-        - task: PublishBuildArtifacts@1
-            inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-            ArtifactName: 'drop'
-            publishLocation: 'Container'
 
-      displayName: 'Agent Preparation'
+- job: PublishArtifacts
+  steps:
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: './build'
+      ArtifactName: 'deploy_logs'
+      publishLocation: 'Container'
+
+  displayName: 'Agent Preparation'
