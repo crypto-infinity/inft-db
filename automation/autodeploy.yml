@@ -61,10 +61,16 @@ jobs:
 
         npm dotenv --version
         npm @truffle/hdwallet-provider --version
-        npm i dotenv @truffle/hdwallet-provider @chainlink/contracts @openzeppelin/contracts @openzeppelin/contracts-upgradeable web3 -y
+        npm i dotenv web3 @truffle/hdwallet-provider @chainlink/contracts @openzeppelin/contracts @openzeppelin/contracts-upgradeable @chainlink/contracts @openzeppelin/truffle-upgrades -y
 
         sudo truffle compile
       displayName: Truffle Compile
+
+    - script: |
+        echo "Beginning Migration:"
+
+        sudo truffle migrate
+      displayName: Truffle Migrate
 
 - job: PublishArtifacts
   dependsOn: DeployBlockchain
