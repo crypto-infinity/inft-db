@@ -51,17 +51,15 @@ jobs:
       displayName: Repository Files Preparation
 
     - script: |
-        echo "Beginning Compiling:"
+        echo "Beginning Compiling: "
 
         echo "Contents of home/vsts before compilation: "
 
         ls -l
 
-        echo "NPM modules versions: "
+        echo "Installing Dependencies: "
 
-        npm dotenv --version
-        npm @truffle/hdwallet-provider --version
-        npm i dotenv web3 @truffle/hdwallet-provider @chainlink/contracts @openzeppelin/contracts @openzeppelin/contracts-upgradeable @chainlink/contracts @openzeppelin/truffle-upgrades -y
+        npm i dotenv web3 abstract-level @truffle/hdwallet-provider @chainlink/contracts @openzeppelin/contracts @openzeppelin/contracts-upgradeable @chainlink/contracts @openzeppelin/truffle-upgrades -y
 
         sudo truffle compile
       displayName: Truffle Compile
