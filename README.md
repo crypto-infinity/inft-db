@@ -1,6 +1,6 @@
 # INFT-DB
 
-Backend repository for the INFT_DB Project: a decentralized, multi-chain, extensible and flexible digital asset manager.
+Backend repository for the INFT Project: a decentralized, multi-chain, extensible and flexible digital asset manager.
 
 ## Installation
 
