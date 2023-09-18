@@ -27,14 +27,16 @@ contract standardNFT_DB is
 
     string private _contractLevelMetadataURI; //See https://docs.opensea.io/docs/contract-level-metadata
 
-    mapping(uint256 => string) private _tokenURIs; //tokenURI custom implementation
+    //Metadata variables declaration
+    string public name;
 
+    //Mapping declaration
+    mapping(address => uint256[]) public tokenMappings; //Keep track of who minted what on the blockchain - TO BE FIXED
+
+    mapping(uint256 => string) private _tokenURIs; //tokenURI custom implementation
     mapping(uint256 => bool) private tokenMinted; //Check if tokenID has already been minted
     mapping(uint256 => bool) private isBurnable; //Check if tokenID is burnable
     mapping(uint256 => bool) private isMutable; //Check if tokenID URI is mutable, if his URI can be changed at a later time
-
-    //Metadata variables declaration
-    string public name;
 
     function initialize(
         string memory contract_uri,
@@ -105,10 +107,12 @@ contract standardNFT_DB is
     ) public nonReentrant onlyRole(ADMIN_ROLE) {
         if (exists(tokenId)) {
             _mint(to, tokenId, amount, "");
+            tokenMappings[to].push(tokenId); //TO BE FIXED
         }
         //if it exist already, just mintToken the NFT
         else {
             _mint(to, tokenId, amount, "");
+            tokenMappings[to].push(tokenId); //TO BE FIXED
             tokenMinted[tokenId] = true;
             _setTokenUri(tokenId, contract_uri); //if token URI is empty, token is considered ERC20 like
 
