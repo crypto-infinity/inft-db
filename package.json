@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@chainlink/contracts": "^0.5.1",
+    "@openzeppelin/contracts": "^4.9.3",
+    "@openzeppelin/contracts-upgradeable": "^4.9.3",
+    "@openzeppelin/truffle-upgrades": "^1.20.1",
+    "@truffle/hdwallet-provider": "^1.7.0",
+    "abstract-level": "^1.0.3",
+    "dotenv": "^16.3.1",
+    "solc": "^0.8.21"
+  }
+}

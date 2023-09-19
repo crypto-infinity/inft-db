@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.21;
+pragma solidity ^0.8.21;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol"; //implements UUIP pattern for upgrades
 import "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155PausableUpgradeable.sol"; //implements pausable pattern for upgrades
@@ -31,7 +31,7 @@ contract standardNFT_DB is
     string public name;
 
     //Mapping declaration
-    mapping(address => uint256[]) public tokenMappings; //Keep track of who minted what on the blockchain - TO BE FIXED
+    mapping(address => uint256[]) private tokenMappings; //Keep track of who minted what on the blockchain - TO BE FIXED
 
     mapping(uint256 => string) private _tokenURIs; //tokenURI custom implementation
     mapping(uint256 => bool) private tokenMinted; //Check if tokenID has already been minted
@@ -50,6 +50,7 @@ contract standardNFT_DB is
         //Contract variables setup
         _contractLevelMetadataURI = contract_uri;
         name = contract_name;
+        _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
 
         if (admins.length > 0) { //first admin assignation
             for (uint256 i = 0; i < admins.length; i++) {
@@ -172,7 +173,7 @@ contract standardNFT_DB is
 
     function setTokenUri(uint256 tokenId, string memory token_uri)
         public
-        onlyRole(ADMIN_ROLE) //TO BE VERIFIED
+        onlyRole(ADMIN_ROLE)
     {
         if (isMutable[tokenId]) {
             _setTokenUri(tokenId, token_uri);
@@ -183,6 +184,22 @@ contract standardNFT_DB is
                 revert("IERCPlatform: URI for specified tokenId is permanent!");
         }
     }
+
+    /**
+        @dev Returns all tokens owned in any quantity by a specific address
+        @param who: The address to check
+
+        @return tokenId[]: Array[uint256] - tokenIds associated with who. Can be duplicated, so it is compulsory to clean the array off-chain.
+     */
+    function getTokenMappings(address who)
+        public
+        view
+        onlyRole(ADMIN_ROLE)
+        returns (uint256[] memory)
+    {
+        return tokenMappings[who];
+    }
+
 
     /**
      * @dev pausable public implementation, allows admins to block contract operation from an unpaused state.
