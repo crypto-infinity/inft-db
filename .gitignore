@@ -1,7 +1,7 @@
 node_modules
 .env
-build
 backups
+build
 contracts_archive
 settings.json
 contracts/ERC20.sol

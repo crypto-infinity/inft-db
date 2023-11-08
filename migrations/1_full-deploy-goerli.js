@@ -11,7 +11,7 @@ module.exports = async function(deployer) {
   try
   {
     var contract = await platform_contract.deployed();
-    var instance = await upgradeProxy(existing.address, platform_contract, { deployer });
+    var instance = await upgradeProxy(contract.address, platform_contract, { deployer });
   }
   catch(error)
   {

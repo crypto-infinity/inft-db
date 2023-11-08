@@ -55,6 +55,7 @@ contract standardNFT_DB is
         if (admins.length > 0) { //first admin assignation
             for (uint256 i = 0; i < admins.length; i++) {
                 _grantRole(DEFAULT_ADMIN_ROLE, admins[i]);
+                _grantRole(ADMIN_ROLE, admins[i]);
             }
         }
     }
