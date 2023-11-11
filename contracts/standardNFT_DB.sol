@@ -50,7 +50,10 @@ contract standardNFT_DB is
         //Contract variables setup
         _contractLevelMetadataURI = contract_uri;
         name = contract_name;
+
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _grantRole(ADMIN_ROLE, msg.sender);
+        // This looks like an address but has an invalid checksum. Correct checksummed address: "0xB312Dcf3Bd0BFEDf9c932C0f35fa1B3c3859e4a0". If this is not used as an address, please prepend '00'. For more information please see https://docs.soliditylang.org/en/develop/types.html#address-literals
 
         if (admins.length > 0) { //first admin assignation
             for (uint256 i = 0; i < admins.length; i++) {
@@ -195,12 +198,10 @@ contract standardNFT_DB is
     function getTokenMappings(address who)
         public
         view
-        onlyRole(ADMIN_ROLE)
         returns (uint256[] memory)
     {
         return tokenMappings[who];
     }
-
 
     /**
      * @dev pausable public implementation, allows admins to block contract operation from an unpaused state.
