@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.21;
+pragma solidity >=0.8.24;
 
 import "@openzeppelin/contracts/access/AccessControlEnumerable.sol"; //implements RBAC for its current token
 import "@chainlink/contracts/src/v0.8/AutomationCompatible.sol"; //Chainlink interface assembly
