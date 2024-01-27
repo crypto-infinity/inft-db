@@ -1,7 +1,7 @@
 require('dotenv').config();
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
-const { API_KEY_GOERLI_ALCHEMY, API_KEY_GOERLI_ALCHEMY_HTTPS ,API_KEY_GOERLI_INFURA, API_KEY_MUMBAI_ALCHEMY, API_KEY_MAINNET_ALCHEMY, MNEMONIC, ETHERSCAN_API_KEY, POLYGONSCAN_API_KEY } = process.env;
+const { API_KEY_SEPOLIA_ALCHEMY, API_KEY_SEPOLIA_ALCHEMY_HTTPS ,API_KEY_SEPOLIA_INFURA, API_KEY_MUMBAI_ALCHEMY, API_KEY_MAINNET_ALCHEMY, MNEMONIC, ETHERSCAN_API_KEY, POLYGONSCAN_API_KEY } = process.env;
 
 module.exports = {
   networks: {
@@ -15,9 +15,9 @@ module.exports = {
       port: 8545,
       network_id: "*"
     },
-    goerli: {
-      provider: () => new HDWalletProvider(MNEMONIC, API_KEY_GOERLI_ALCHEMY),
-      network_id: '5',
+    sepolia: {
+      provider: () => new HDWalletProvider(MNEMONIC, API_KEY_SEPOLIA_ALCHEMY),
+      network_id: '11155111',
       //gasPrice: 25000000000,
       skipDryRun: true,
       websocket: true,

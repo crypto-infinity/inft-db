@@ -1,0 +1,8 @@
+{
+  "name": "INFT Database",
+  "description": "iNFT Project: a decentralized, multi-chain, extensible and flexible digital asset manager.",
+  "image": "https://ipfs.io/ipfs/QmSYQDgyx3A3bbMFwqzKxss3PY5uYj7yVQvahbhLFh2swo?filename=logo_image_transparent.png",
+  "external_link": "https://www.inft.com/",
+  "seller_fee_basis_points": 100,
+  "fee_recipient": "0xB312Dcf3Bd0BFEDf9c932C0f35fa1B3c3859e4a0"
+}
