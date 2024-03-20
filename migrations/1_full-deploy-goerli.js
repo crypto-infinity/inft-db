@@ -4,7 +4,7 @@ var platform_contract = artifacts.require("standardNFT_DB");
 
 module.exports = async function(deployer) {
 
-  let contract_uri = "ipfs://QmduKjpvooNjodkuSvG8VLZ4nkUBhnm86XXZEw8KQJwtqN";
+  let contract_uri = "ipfs://bafkreicxgc7kugxbekfi726jg6nphpjyzki7x6fpicnlae37kwi6pwqqge";
   let contract_admins =  ["0xB312Dcf3Bd0BFEDf9c932C0f35fa1B3c3859e4a0"];
   let contract_name = "INFT";
 

@@ -8,7 +8,7 @@ import "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgrad
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol"; //implements UUIP pattern for upgrades
 import "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol"; //implements UUIP pattern for upgrades
 
-import "./INFT_DB.sol"; //ERCPlatform Custom Interface, contracts should support interface this
+import "./INFT_DB.sol"; //ERCPlatform Custom Interface, contracts should support this interface
 
 /**
  * @dev Standard INFT_DB decentralized database for custodial NFTs for customers.
@@ -74,30 +74,12 @@ contract standardNFT_DB is
         return (_tokenURIs[tokenId]);
     }
 
-    /**
-     * @dev return custom collection URI, for legacy purposes
-     *
-     * @return _contractLevelMetadataURI: string, the contract URI assigned from the constructor
-     */
-    function tokenURI() public view returns (string memory) {
-        return _contractLevelMetadataURI;
-    }
 
     /**
-     * @dev Utility string comparation function. Allows to check if a and b are equal.
+     * @dev Contract level metadata. See https://docs.opensea.io/docs/contract-level-metadata
      *
-     * @param a: string, the first string to compare
-     * @param b: string, the second string to compare
-     * @return equals: bool, says if a and b are equal
+     * @return URI: string, URI address of contract metadata
      */
-    function compareStrings(string memory a, string memory b)
-        public
-        pure
-        returns (bool)
-    {
-        return keccak256(abi.encodePacked(a)) == keccak256(abi.encodePacked(b));
-    }
-
     function contractURI() public view returns (string memory) {
         return _contractLevelMetadataURI;
     }
@@ -234,6 +216,22 @@ contract standardNFT_DB is
             super.supportsInterface(interfaceId);
     }
 
+    
+    /**
+     * @dev Utility string comparation function. Allows to check if a and b are equal.
+     *
+     * @param a: string, the first string to compare
+     * @param b: string, the second string to compare
+     * @return equals: bool, says if a and b are equal
+     */
+    function compareStrings(string memory a, string memory b)
+        public
+        pure
+        returns (bool)
+    {
+        return keccak256(abi.encodePacked(a)) == keccak256(abi.encodePacked(b));
+    }
+
     //PRIVATE AND INTERNAL UTILITY FUNCTIONS DECLARATION
 
     function _setTokenUri(uint256 tokenId, string memory token_uri) private {
@@ -249,6 +247,8 @@ contract standardNFT_DB is
         override
         onlyRole(DEFAULT_ADMIN_ROLE)
     {}
+
+    
 }
 
 // /**

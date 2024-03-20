@@ -16,13 +16,6 @@ interface INFT_DB
     function name() external view returns (string memory);
 
     /**
-     * @dev return custom collection URI, for legacy purposes
-     *
-     * @return _contractLevelMetadataURI: string, the contract URI assigned from the constructor
-     */
-    function tokenURI() external view returns (string memory);
-
-    /**
      * @dev return custom contract URI (collection metadata) as described by OpenSea: https://docs.opensea.io/docs/contract-level-metadata
      *
      * @return contractURI: string, contractURI as defined in OpenSea standards.
