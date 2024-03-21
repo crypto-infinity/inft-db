@@ -1,0 +1,9 @@
+{
+  "name": "INFT",
+  "description": "INFT Project: a decentralized, multi-chain, extensible and flexible digital asset manager.",
+  "image": "ipfs://bafkreih6qa3uh5bnbrtpi5j7sp2nxtxtvuf4nbhqz5ucdnmoubqboayw7y",
+  "external_link": "https://inft.scorpaniti.it",
+  "seller_fee_basis_points": 100,
+  "collaborators": ["0xB312Dcf3Bd0BFEDf9c932C0f35fa1B3c3859e4a0"],
+  "fee_recipient": "0xB312Dcf3Bd0BFEDf9c932C0f35fa1B3c3859e4a0"
+}
