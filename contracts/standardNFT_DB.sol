@@ -151,7 +151,6 @@ contract standardNFT_DB is
     function exists(uint256 tokenId)
         public
         view
-        onlyRole(ADMIN_ROLE)
         returns (bool)
     {
         return tokenMinted[tokenId];
